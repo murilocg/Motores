@@ -1,6 +1,24 @@
 $("#container-msg-success").hide();
 $(document).ready(listarMotores);
 
+function openModalMotor(idMotor) {
+    resetForm();
+    if (idMotor != 0) {
+        var motor = $MDB.find(idMotor);
+        $("#motorid").val(motor.id);
+        $("#numeropolos").val(motor.numeropolos);
+        $("#tensaorede").val(motor.tensaorede);
+        $("#regimeservico").val(motor.regimeservico);
+        $("#correntenominal").val(motor.correntenominal);
+        $("#potencianominal").val(motor.potencianominal);
+        $("#torquemaximo").val(motor.torquemaximo);
+        $("#modal-motor .modal-title").text("Editar Motor");
+    }else{
+        $("#modal-motor .modal-title").text("Adicionar Motor");
+    }
+    $("#modal-motor").modal("show");
+}
+
 function adicionarMotor(id, numeropolos, tensaorede, regimeservico, correntenominal, potencianominal, torquemaximo) {
     var motor = new Motor(id, numeropolos, tensaorede, regimeservico, correntenominal, potencianominal, torquemaximo);
     if (motor.id != 0) {
@@ -10,11 +28,11 @@ function adicionarMotor(id, numeropolos, tensaorede, regimeservico, correntenomi
     } else if ($MDB.create(motor)) {
         showSuccessMsg("Motor criado com sucesso");
     }
-    resetForm();
+    $("#modal-motor").modal("hide");
     listarMotores();
 }
 
-function showSuccessMsg(msg){
+function showSuccessMsg(msg) {
     $("#msg-success").html(msg);
     $("#container-msg-success").show();
 }
@@ -65,7 +83,7 @@ function listarMotores() {
         var btnRemove = $("<a></a>").addClass("btn btn-danger").attr("href", "javascript:confirmRemove(" + motor.id + ")");
         btnRemove.append($("<span></span>").addClass("glyphicon glyphicon-remove"));
 
-        var btnEdit = $("<a></a>").addClass("btn btn-default").attr("href", "javascript:editMotor(" + motor.id + ")");
+        var btnEdit = $("<a></a>").addClass("btn btn-default").attr("href", "javascript:openModalMotor(" + motor.id + ")");
         btnEdit.append($("<span></span>").addClass("glyphicon glyphicon-pencil"));
 
         options.append(btnRemove);
