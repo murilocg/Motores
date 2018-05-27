@@ -19,3 +19,8 @@ $MDB.salvarMotor = function(motor){
     $MDB.tableMotor.push(motor);
     return true;
 }
+
+$MDB.removerMotor = function(idMotor){
+    $MDB.tableMotor = $MDB.tableMotor.filter(motor => motor.id !== idMotor);
+    return true;
+}
