@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gerenciamento de Motores</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="container-msg-success" class="alert alert-success alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> <span id="msg-success"></span>
+        </div>
+        <h2>Adicionar Motor Elétrico</h2>
+        <form id="form-motor" action="javascript:adicionarMotor(this.numeropolos.value, this.tensaorede.value, this.regimeservico.value, this.correntenominal.value, this.potencianominal, this.torquemaximo.value);">
+            <div class="form-group" >
+                <label for="numeropolos">Número de polos</label>
+                <select id="numeropolos" class="form-control" required>
+                      <option>2</option>
+                      <option>4</option>
+                      <option>6</option>
+                      <option>8</option>
+                  </select>
+            </div>
+            <div class="form-group">
+                <label for="tensaorede">Tensão de rede</label>
+                <select id="tensaorede" class="form-control" required>
+                      <option>220</option>
+                      <option>380</option>
+                      <option>440</option>
+                  </select>
+            </div>
+            <div class="form-group">
+                <label for="regimeservico">Regime de serviço</label>
+                <select id="regimeservico" class="form-control" required>
+                      <option>S1</option>
+                      <option>S2</option>
+                      <option>S3</option>
+                      <option>S4</option>
+                      <option>S5</option>
+                  </select>
+            </div>
+            <div class="form-group">
+                <label for="correntenominal">Corrente nominal</label>
+                <input type="number" class="form-control" id="correntenominal" placeholder="Digite a corrente nominal em Amperes" name="correntenominal" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="correntenominal">Potência nominal</label>
+                <input type="number" class="form-control" id="potencianominal" placeholder="Digite a potência nominal em Volts" name="potencianominal" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="torquemaximo">Torque máximo</label>
+                <input type="number" class="form-control" id="torquemaximo" placeholder="Digite o torque máximo em Newton-metro" name="torquemaximo" required min="0">
+            </div>
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="button" class="btn btn-danger" onclick="resetForm();">Cancelar</button>
+        </form>
+    </div>
+    <script src="js/mockupdb.js"></script>
+    <script src="js/motores.js"></script>
+</body>
+</html>
