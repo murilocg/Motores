@@ -31,12 +31,6 @@ function adicionarMotor(id, numeropolos, tensaorede, regimeservico, correntenomi
     $("#modal-motor").modal("hide");
     listarMotores();
 }
-
-function showSuccessMsg(msg) {
-    $("#msg-success").html(msg);
-    $("#container-msg-success").show();
-}
-
 function resetForm() {
     $("#motorid").val(0);
     document.getElementById("form-motor").reset();
@@ -93,3 +87,13 @@ function listarMotores() {
         $("#content-table-motores").append(item);
     });
 }
+
+function hideContainerMsg(){
+    $("#container-msg-success").hide();
+}
+
+function showSuccessMsg(msg) {
+    $("#msg-success").html(msg);
+    $("#container-msg-success").show();
+}
+
