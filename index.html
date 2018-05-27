@@ -17,7 +17,7 @@
         </div>
         <h2>Adicionar Motor Elétrico</h2>
         <form id="form-motor" action="javascript:adicionarMotor(this.numeropolos.value, this.tensaorede.value, this.regimeservico.value, this.correntenominal.value, this.potencianominal.value, this.torquemaximo.value);">
-            <div class="form-group" >
+            <div class="form-group">
                 <label for="numeropolos">Número de polos</label>
                 <select id="numeropolos" class="form-control" required>
                       <option>2</option>
@@ -68,12 +68,31 @@
                     <th>Corrente nominal</th>
                     <th>Potência nominal</th>
                     <th>Torque máximo</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody id="content-table-motores">
-                
+
             </tbody>
         </table>
+        <div class="modal fade" id="confirm-modal-remove" role="dialog">
+            <input type="hidden">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Confirmação de Remoção</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja remover?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn-yes-remove-motor" type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok"> </span> Sim</button>
+                        <button id="btn-no-remove-motor" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> </span> Não</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/mockupdb.js"></script>
     <script src="js/motores.js"></script>

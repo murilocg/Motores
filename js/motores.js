@@ -15,6 +15,22 @@ function resetForm(){
      document.getElementById("form-motor").reset(); 
 }
 
+function confirmRemove(idMotor){
+    $("#btn-yes-remove-motor").click(function (){
+        removeMotor(idMotor);
+    });
+    $("#confirm-modal-remove").modal("show");
+}
+
+function removeMotor(idMotor){
+    if($MDB.removerMotor(idMotor)){
+        $("#msg-success").html("Motor removido com sucesso");
+        $("#container-msg-success").show();
+        $("#confirm-modal-remove").modal("hide");
+        listarMotores();
+    }
+}
+
 function listarMotores(){
     $("#content-table-motores").html("");
     $MDB.tableMotor.forEach(function(motor){
@@ -25,6 +41,11 @@ function listarMotores(){
         item.append($("<td></td").text(motor.correntenominal));
         item.append($("<td></td").text(motor.potencianominal));
         item.append($("<td></td").text(motor.torquemaximo));
+        var options = $("<td></td");
+        var btnRemove = $("<a></a>").addClass("btn btn-danger").attr("href", "javascript:confirmRemove(" + motor.id + ")"); 
+        btnRemove.append($("<span></span>").addClass("glyphicon glyphicon-remove"));
+        options.append(btnRemove);
+        item.append(options);
         $("#content-table-motores").append(item);
     });
 }
