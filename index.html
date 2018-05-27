@@ -16,7 +16,8 @@
             <strong>Success!</strong> <span id="msg-success"></span>
         </div>
         <h2>Adicionar Motor Elétrico</h2>
-        <form id="form-motor" action="javascript:adicionarMotor(this.numeropolos.value, this.tensaorede.value, this.regimeservico.value, this.correntenominal.value, this.potencianominal.value, this.torquemaximo.value);">
+        <form id="form-motor" action="javascript:adicionarMotor(this.motorid.value, this.numeropolos.value, this.tensaorede.value, this.regimeservico.value, this.correntenominal.value, this.potencianominal.value, this.torquemaximo.value);">
+            <input id="motorid" name="motorid" type="hidden" value="0">
             <div class="form-group">
                 <label for="numeropolos">Número de polos</label>
                 <select id="numeropolos" class="form-control" required>
@@ -68,7 +69,7 @@
                     <th>Corrente nominal</th>
                     <th>Potência nominal</th>
                     <th>Torque máximo</th>
-                    <th>Options</th>
+                    <th>Opções</th>
                 </tr>
             </thead>
             <tbody id="content-table-motores">
